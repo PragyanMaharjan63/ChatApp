@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 import { Eye, EyeClosed } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
-export default function login() {
+export default function signup() {
   const [showpw, setShowpw] = useState(0);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [verifypw, setVerifypw] = useState("");
 
   function showpass() {
     if (showpw) {
@@ -27,10 +29,8 @@ export default function login() {
       <div className="bg-white/10 border-gray-800 border backdrop-blur-md shadow-lg p-8 rounded-lg ">
         <form onSubmit={handleSubmit} className="flex flex-col gap-8">
           <div className="flex flex-col items-center">
-            <p className="font-bold text-3xl text-blue-300">Welcome Back</p>
-            <p className="text-neutral-200">
-              Sign in to your account to continue
-            </p>
+            <p className="font-bold text-3xl text-blue-300">Welcome</p>
+            <p className="text-neutral-200">Create a account to continue</p>
           </div>
           <div className="flex flex-col">
             <label htmlFor="Username" className="px-2">
@@ -51,6 +51,22 @@ export default function login() {
             <label htmlFor="Password" className="px-2">
               Password
             </label>
+
+            <input
+              className="border-gray-800 border bg-white/10 rounded-sm p-2 m-2 sm:w-96 outline-none"
+              type={showpass()}
+              id="Password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+              placeholder="Enter your Password "
+            />
+          </div>
+          <div className="flex flex-col relative">
+            <label htmlFor="Password" className="px-2">
+              Password
+            </label>
             <label
               className="absolute bottom-4 right-5"
               htmlFor="Password"
@@ -64,23 +80,23 @@ export default function login() {
               className="border-gray-800 border bg-white/10 rounded-sm p-2 m-2 sm:w-96 outline-none"
               type={showpass()}
               id="Password"
-              value={password}
+              value={verifypw}
               onChange={(e) => {
-                setPassword(e.target.value);
+                setVerifypw(e.target.value);
               }}
               placeholder="Enter your Password "
             />
           </div>
           <div className="flex justify-center gap-2">
-            Don't have an account?
-            <NavLink to="/signup" className="underline text-blue-400">
+            Already have an account?
+            <NavLink to="/login" className="underline text-blue-400">
               Click here
             </NavLink>
           </div>
           <div>
             <input
               type="submit"
-              value="Submit"
+              value="Create"
               className="bg-blue-600 p-2 w-full rounded-lg"
             />
           </div>

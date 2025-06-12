@@ -25,6 +25,16 @@ export default function navbar() {
         >
           Login
         </NavLink>
+        <NavLink
+          to="/signup"
+          className={({ isActive }) =>
+            `p-2 rounded transition-all ${
+              isActive ? "bg-blue-500 text-white" : ""
+            }`
+          }
+        >
+          Signup
+        </NavLink>
       </div>
     </div>
   );

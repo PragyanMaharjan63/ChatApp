@@ -64,12 +64,12 @@ export default function signup() {
             />
           </div>
           <div className="flex flex-col relative">
-            <label htmlFor="Password" className="px-2">
-              Password
+            <label htmlFor="verifyPassword" className="px-2">
+              Verify Password
             </label>
             <label
               className="absolute bottom-4 right-5"
-              htmlFor="Password"
+              htmlFor="verifyPassword"
               onClick={() => {
                 setShowpw(!showpw);
               }}
@@ -79,12 +79,12 @@ export default function signup() {
             <input
               className="border-gray-800 border bg-white/10 rounded-sm p-2 m-2 sm:w-96 outline-none"
               type={showpass()}
-              id="Password"
+              id="verifyPassword"
               value={verifypw}
               onChange={(e) => {
                 setVerifypw(e.target.value);
               }}
-              placeholder="Enter your Password "
+              placeholder="Re-Enter your Password "
             />
           </div>
           <div className="flex justify-center gap-2">

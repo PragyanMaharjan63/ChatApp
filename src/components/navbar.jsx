@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 
 export default function navbar() {
   return (
-    <div>
-      <div className="flex flex-col gap-2 p-2">
+    <div className="w-40">
+      <div className="flex flex-col gap-2 p-2 ">
         <NavLink
           to="/"
           className={({ isActive }) =>

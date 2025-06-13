@@ -11,13 +11,17 @@ function App() {
   return (
     <>
       <div className="flex justify-center">
-        {isSmall ? (
-          <Hamburger />
-        ) : (
-          <div className="w-[20vw] lg:w-[10vw]">
-            <Navbar />
-          </div>
-        )}
+        <div>
+          {isSmall ? (
+            <div className="absolute left-0 m-4 z-10 ">
+              <Hamburger />
+            </div>
+          ) : (
+            <div className="w-[20vw] lg:w-[10vw]">
+              <Navbar />
+            </div>
+          )}
+        </div>
         <div className="flex justify-center items-center h-svh w-[80vw] lg:w-[90vw]">
           <Outlet />
         </div>

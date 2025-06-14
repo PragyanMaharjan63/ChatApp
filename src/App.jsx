@@ -7,7 +7,6 @@ import Navbar from "./components/navbar";
 
 function App() {
   const isSmall = useMediaQuery({ maxWidth: 500 });
-  console.log(isSmall);
   return (
     <>
       <div className="flex justify-center">

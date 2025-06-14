@@ -23,68 +23,70 @@ export default function login() {
   };
 
   return (
-    <div>
-      <div className="bg-white/10 border-gray-800 border backdrop-blur-md shadow-lg p-8 rounded-lg ">
-        <form onSubmit={handleSubmit} className="flex flex-col gap-8">
-          <div className="flex flex-col items-center">
-            <p className="font-bold text-3xl text-blue-300">Welcome Back</p>
-            <p className="text-neutral-200">
-              Sign in to your account to continue
-            </p>
-          </div>
-          <div className="flex flex-col">
-            <label htmlFor="Username" className="px-2">
-              Username
-            </label>
-            <input
-              className="border-gray-800 border bg-white/10 rounded-sm p-2 m-2 sm:w-96 outline-none"
-              type="text"
-              id="Username"
-              value={username}
-              onChange={(e) => {
-                setUsername(e.target.value);
-              }}
-              placeholder="Enter your Username"
-            />
-          </div>
-          <div className="flex flex-col relative">
-            <label htmlFor="Password" className="px-2">
-              Password
-            </label>
-            <label
-              className="absolute bottom-4 right-5"
-              htmlFor="Password"
-              onClick={() => {
-                setShowpw(!showpw);
-              }}
-            >
-              {showpw ? <Eye /> : <EyeClosed />}
-            </label>
-            <input
-              className="border-gray-800 border bg-white/10 rounded-sm p-2 m-2 sm:w-96 outline-none"
-              type={showpass()}
-              id="Password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-              placeholder="Enter your Password "
-            />
-          </div>
-          <div className="flex justify-center gap-2">
-            Don't have an account?
-            <NavLink to="/signup" className="underline text-blue-400">
-              Click here
-            </NavLink>
-          </div>
-          <div>
-            <input
-              type="submit"
-              value="Submit"
-              className="bg-blue-600 p-2 w-full rounded-lg"
-            />
-          </div>
-        </form>
+    <div className="h-screen flex items-center">
+      <div>
+        <div className="bg-white/10 border-gray-800 border backdrop-blur-md shadow-lg p-8 rounded-lg ">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-8">
+            <div className="flex flex-col items-center">
+              <p className="font-bold text-3xl text-blue-300">Welcome Back</p>
+              <p className="text-neutral-200">
+                Sign in to your account to continue
+              </p>
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="Username" className="px-2">
+                Username
+              </label>
+              <input
+                className="border-gray-800 border bg-white/10 rounded-sm p-2 m-2 sm:w-96 outline-none"
+                type="text"
+                id="Username"
+                value={username}
+                onChange={(e) => {
+                  setUsername(e.target.value);
+                }}
+                placeholder="Enter your Username"
+              />
+            </div>
+            <div className="flex flex-col relative">
+              <label htmlFor="Password" className="px-2">
+                Password
+              </label>
+              <label
+                className="absolute bottom-4 right-5"
+                htmlFor="Password"
+                onClick={() => {
+                  setShowpw(!showpw);
+                }}
+              >
+                {showpw ? <Eye /> : <EyeClosed />}
+              </label>
+              <input
+                className="border-gray-800 border bg-white/10 rounded-sm p-2 m-2 sm:w-96 outline-none"
+                type={showpass()}
+                id="Password"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+                placeholder="Enter your Password "
+              />
+            </div>
+            <div className="flex justify-center gap-2">
+              Don't have an account?
+              <NavLink to="/signup" className="underline text-blue-400">
+                Click here
+              </NavLink>
+            </div>
+            <div>
+              <input
+                type="submit"
+                value="Submit"
+                className="bg-blue-600 p-2 w-full rounded-lg"
+              />
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

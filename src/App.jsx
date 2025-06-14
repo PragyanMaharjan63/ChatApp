@@ -9,10 +9,10 @@ function App() {
   const isSmall = useMediaQuery({ maxWidth: 500 });
   return (
     <>
-      <div className="flex w-full h-screen">
+      <div className="flex w-full h-full overflow-y-auto">
         <div className="realitve left-0">
           {isSmall ? (
-            <div className="absolute left-0 m-4 z-10 ">
+            <div className="absolute left-0 top-3 m-4 z-10 ">
               <Hamburger />
             </div>
           ) : (

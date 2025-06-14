@@ -9,19 +9,19 @@ function App() {
   const isSmall = useMediaQuery({ maxWidth: 500 });
   return (
     <>
-      <div className="flex justify-center">
-        <div>
+      <div className="flex w-full h-screen">
+        <div className="realitve left-0">
           {isSmall ? (
             <div className="absolute left-0 m-4 z-10 ">
               <Hamburger />
             </div>
           ) : (
-            <div className="w-[20vw] lg:w-[10vw]">
+            <div className="">
               <Navbar />
             </div>
           )}
         </div>
-        <div className="flex justify-center items-center h-svh w-[80vw] lg:w-[90vw]">
+        <div className="flex justify-center items-center w-full">
           <Outlet />
         </div>
       </div>

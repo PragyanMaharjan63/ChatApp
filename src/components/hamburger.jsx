@@ -16,7 +16,13 @@ export default function hamburger() {
           {!navbar && <Menu />}
           {navbar && <X />}
         </div>
-        <div>{navbar && <Navbar />}</div>
+        <div
+          onClick={() => {
+            showNav((prev) => !prev);
+          }}
+        >
+          {navbar && <Navbar />}
+        </div>
       </div>
     </>
   );

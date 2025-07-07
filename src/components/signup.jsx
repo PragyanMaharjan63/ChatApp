@@ -5,8 +5,7 @@ import { NavLink } from "react-router-dom";
 
 export default function signup() {
   const [showpw, setShowpw] = useState(0);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({ username: "", password: "" });
   const [verifypw, setVerifypw] = useState("");
   const [errors, setErrors] = useState([]);
 
@@ -22,10 +21,15 @@ export default function signup() {
 
     const newErrors = [];
 
-    if (username.trim() === "") newErrors.push("Username cannot be empty");
-    if (password === "") newErrors.push("Password cannot be empty");
+    if (formData.username.trim() === "")
+      newErrors.push("Username cannot be empty");
+    if (formData.password === "") newErrors.push("Password cannot be empty");
     if (verifypw === "") newErrors.push("Verify Password cannot be empty");
-    if (password !== "" && verifypw !== "" && password !== verifypw)
+    if (
+      formData.password !== "" &&
+      verifypw !== "" &&
+      formData.password !== verifypw
+    )
       newErrors.push("Passwords do not match");
 
     if (newErrors.length > 0) {
@@ -34,9 +38,23 @@ export default function signup() {
     }
 
     setErrors([]); // clear errors
-    setUsername("");
-    setPassword("");
     setVerifypw("");
+
+    try {
+      const res = fetch("http://localhost:5000/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" }, //imp for express to know the content type
+        body: JSON.stringify(formData),
+      });
+      if (res.ok) {
+        setFormData({ username: "", password: "" });
+        console.log("registered");
+      } else {
+        console.log("something went wrong");
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -56,9 +74,9 @@ export default function signup() {
                 className="border-gray-800 border bg-white/10 rounded-sm p-2 m-2 sm:w-96 outline-none"
                 type="text"
                 id="Username"
-                value={username}
+                value={formData.username}
                 onChange={(e) => {
-                  setUsername(e.target.value);
+                  setFormData({ ...formData, username: e.target.value });
                 }}
                 placeholder="Enter your Username"
               />
@@ -72,9 +90,9 @@ export default function signup() {
                 className="border-gray-800 border bg-white/10 rounded-sm p-2 m-2 sm:w-96 outline-none"
                 type={showpass()}
                 id="Password"
-                value={password}
+                value={formData.password}
                 onChange={(e) => {
-                  setPassword(e.target.value);
+                  setFormData({ ...formData, password: e.target.value });
                 }}
                 placeholder="Enter your Password "
               />

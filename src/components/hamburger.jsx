@@ -7,6 +7,7 @@ export default function hamburger() {
   return (
     <>
       <div className="flex  relative w-40 left-0 -top-1.5 bg-neutral-800 rounded-lg">
+        {/* shows navbar vertically */}
         <div
           className="absolute top-0"
           onClick={() => {

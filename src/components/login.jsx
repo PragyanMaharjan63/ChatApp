@@ -6,6 +6,7 @@ export default function login() {
   const [showpw, setShowpw] = useState(0);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState([]);
 
   function showpass() {
     if (showpw) {
@@ -16,8 +17,21 @@ export default function login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Username: ${username}\nPassword: ${password}`);
-    // Clear inputs after submit
+
+    
+    const newErrors = [];
+
+
+    if (username.trim() === "") newErrors.push("Username cannot be empty");
+    if (password === "") newErrors.push("Password cannot be empty");
+  
+ 
+      if (newErrors.length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    setErrors([]); 
     setUsername("");
     setPassword("");
   };
@@ -72,6 +86,13 @@ export default function login() {
                 placeholder="Enter your Password "
               />
             </div>
+              {errors.length > 0 && (
+              <div className="text-red-500">
+                {errors.map((error, index) => (
+                  <p key={index}>{error}</p>
+                ))}
+              </div>
+            )}
             <div className="flex justify-center gap-2">
               Don't have an account?
               <NavLink to="/signup" className="underline text-blue-400">

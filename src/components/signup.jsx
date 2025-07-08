@@ -8,6 +8,9 @@ export default function signup() {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [verifypw, setVerifypw] = useState("");
   const [errors, setErrors] = useState([]);
+  const [popup, setPopup] = useState(false);
+  const [redMsg, setRedMsg] = useState(true);
+  const [message, setMessage] = useState([]);
 
   function showpass() {
     if (showpw) {
@@ -16,9 +19,9 @@ export default function signup() {
     return "password";
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
+    const newMessage = [];
     const newErrors = [];
 
     if (formData.username.trim() === "")
@@ -32,33 +35,42 @@ export default function signup() {
     )
       newErrors.push("Passwords do not match");
 
-    if (newErrors.length > 0) {
-      setErrors(newErrors);
-      return;
-    }
-
-    setErrors([]); // clear errors
-    setVerifypw("");
-
     try {
-      const res = fetch("http://localhost:5000/api/register", {
+      const res = await fetch("http://localhost:5000/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" }, //imp for express to know the content type
         body: JSON.stringify(formData),
       });
+      const data = await res.json();
+      console.log(data.message);
+      newMessage.push(data.message);
       if (res.ok) {
-        setFormData({ username: "", password: "" });
         console.log("registered");
+        setErrors([]); // clear errors
+        setVerifypw("");
+        setFormData({ username: "", password: "" });
+        setRedMsg(false);
       } else {
         console.log("something went wrong");
+        setRedMsg(true);
       }
     } catch (err) {
       console.log(err);
     }
+    setPopup(true);
+    if (newErrors.length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+    setMessage(newMessage);
+    setInterval(() => {
+      setPopup(false);
+      setMessage([]);
+    }, 5000);
   };
 
   return (
-    <div className="h-screen flex justify-center items-center">
+    <div className="h-screen flex justify-center items-center ">
       <div>
         <div className="bg-white/10 border-gray-800 border backdrop-blur-md shadow-lg p-8 rounded-lg ">
           <form onSubmit={handleSubmit} className="flex flex-col gap-8">
@@ -144,6 +156,16 @@ export default function signup() {
           </form>
         </div>
       </div>
+      {/* for popup */}
+      {popup && (
+        <div
+          className={`absolute  transition-all right-0 bottom-0 ${
+            redMsg ? "bg-red-500" : "bg-blue-600"
+          } m-4 p-3 rounded-lg`}
+        >
+          {message}
+        </div>
+      )}
     </div>
   );
 }

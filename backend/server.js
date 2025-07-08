@@ -16,14 +16,19 @@ const UserSchema = new mongoose.Schema({
 const user = mongoose.model("User", UserSchema);
 
 app.post("/api/register", async (req, res) => {
-  console.log(req.body);
   const { username, password } = req.body;
-  try {
-    const newUser = new user({ username, password });
-    await newUser.save();
-    res.status(201).json({ message: "User Registered" });
-  } catch (err) {
-    res.status(404).json({ message: err });
+
+  const userCheck = await user.findOne({ username });
+  if (userCheck) {
+    res.status(409).json({ message: "User already exists" });
+  } else {
+    try {
+      const newUser = new user({ username, password });
+      await newUser.save();
+      res.status(201).json({ message: "User Registered" });
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
   }
 });
 

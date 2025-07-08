@@ -35,6 +35,10 @@ export default function signup() {
     )
       newErrors.push("Passwords do not match");
 
+    if (newErrors.length > 0) {
+      setErrors(newErrors);
+      return;
+    }
     try {
       const res = await fetch("http://localhost:5000/api/register", {
         method: "POST",
@@ -58,10 +62,6 @@ export default function signup() {
       console.log(err);
     }
     setPopup(true);
-    if (newErrors.length > 0) {
-      setErrors(newErrors);
-      return;
-    }
     setMessage(newMessage);
     setInterval(() => {
       setPopup(false);
@@ -161,7 +161,7 @@ export default function signup() {
         <div
           className={`absolute  transition-all right-0 bottom-0 ${
             redMsg ? "bg-red-500" : "bg-blue-600"
-          } m-4 p-3 rounded-lg`}
+          } m-4 p-3 w-96 rounded-lg`}
         >
           {message}
         </div>

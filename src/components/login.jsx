@@ -18,20 +18,17 @@ export default function login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    
     const newErrors = [];
-
 
     if (username.trim() === "") newErrors.push("Username cannot be empty");
     if (password === "") newErrors.push("Password cannot be empty");
-  
- 
-      if (newErrors.length > 0) {
+
+    if (newErrors.length > 0) {
       setErrors(newErrors);
       return;
     }
 
-    setErrors([]); 
+    setErrors([]);
     setUsername("");
     setPassword("");
   };
@@ -86,7 +83,7 @@ export default function login() {
                 placeholder="Enter your Password "
               />
             </div>
-              {errors.length > 0 && (
+            {errors.length > 0 && (
               <div className="text-red-500">
                 {errors.map((error, index) => (
                   <p key={index}>{error}</p>
@@ -103,7 +100,7 @@ export default function login() {
               <input
                 type="submit"
                 value="Submit"
-                className="bg-blue-600 p-2 w-full rounded-lg"
+                className="bg-[#544E90] p-2 w-full rounded-lg"
               />
             </div>
           </form>

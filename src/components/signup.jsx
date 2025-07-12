@@ -150,7 +150,7 @@ export default function signup() {
               <input
                 type="submit"
                 value="Create"
-                className="bg-blue-600 p-2 w-full rounded-lg"
+                className="bg-[#544E90] p-2 w-full rounded-lg"
               />
             </div>
           </form>
@@ -160,7 +160,7 @@ export default function signup() {
       {popup && (
         <div
           className={`absolute  transition-all right-0 bottom-0 ${
-            redMsg ? "bg-red-500" : "bg-blue-600"
+            redMsg ? "bg-red-500" : "bg-[#544E90]"
           } m-4 p-3 w-96 rounded-lg`}
         >
           {message}

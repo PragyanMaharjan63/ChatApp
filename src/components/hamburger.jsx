@@ -1,23 +1,25 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { User } from "lucide-react";
 import Navbar from "./navbar";
 
 export default function hamburger() {
   const [navbar, showNav] = useState(false);
   return (
     <>
-      <div className="flex  relative w-40 left-0 -top-1.5 bg-neutral-800 rounded-lg">
+      <div className="flex relative w-40 left-0 -top-1.5 rounded-lg ">
         {/* shows navbar vertically */}
         <div
-          className="absolute top-0"
+          className="absolute flex bottom-0"
           onClick={() => {
             showNav((prev) => !prev);
           }}
         >
-          {!navbar && <Menu />}
-          {navbar && <X />}
+          <div className="bg-[#272538] p-2 rounded-full">
+            <User />
+          </div>
         </div>
         <div
+          className="absolute flex bottom-0 ml-12 bg-[#272538] rounded-xl"
           onClick={() => {
             showNav((prev) => !prev);
           }}

@@ -1,27 +1,18 @@
 import { useState } from "react";
 import "./App.css";
-import { useMediaQuery } from "react-responsive";
 import { Outlet } from "react-router-dom";
 import Hamburger from "./components/hamburger";
 import Navbar from "./components/navbar";
+import ChatPeople from "./components/chatpeople";
 
 function App() {
-  const isSmall = useMediaQuery({ maxWidth: 500 });
   return (
     <>
       <div className="flex w-full h-full sm:h-screen overflow-y-auto">
-        <div className="realitve left-0">
-          {isSmall ? (
-            <div className="absolute left-0 top-3 m-4 z-10 ">
-              <Hamburger />
-            </div>
-          ) : (
-            <div className="">
-              <Navbar />
-            </div>
-          )}
+        <div className="flex w-[25%] ">
+          <ChatPeople />
         </div>
-        <div className="flex justify-center items-center w-full">
+        <div className="flex justify-center items-center w-[75%]">
           <Outlet />
         </div>
       </div>

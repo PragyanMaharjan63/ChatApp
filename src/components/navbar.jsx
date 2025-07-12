@@ -8,8 +8,8 @@ export default function navbar() {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            `p-2 rounded  transition-all ${
-              isActive ? "bg-blue-600 text-white" : ""
+            `p-2 rounded-lg  transition-all ${
+              isActive ? "bg-[#544E90] text-white" : ""
             }`
           }
         >
@@ -18,8 +18,8 @@ export default function navbar() {
         <NavLink
           to="/login"
           className={({ isActive }) =>
-            `p-2 rounded transition-all ${
-              isActive ? "bg-blue-500 text-white" : ""
+            `p-2 rounded-lg transition-all ${
+              isActive ? "bg-[#544E90] text-white" : ""
             }`
           }
         >
@@ -28,8 +28,8 @@ export default function navbar() {
         <NavLink
           to="/signup"
           className={({ isActive }) =>
-            `p-2 rounded transition-all ${
-              isActive ? "bg-blue-500 text-white" : ""
+            `p-2 rounded-lg transition-all ${
+              isActive ? "bg-[#544E90] text-white" : ""
             }`
           }
         >

@@ -39,7 +39,7 @@ export default function ChatBox() {
           </div>
         ))}
       </div>
-      <div className="absolute bottom-0 w-[80%] right-0">
+      <div className="absolute bottom-0 w-full sm:w-[80%] right-0 -z-10">
         <div className="bg-[#272538]  p-3 m-2 my-3 rounded-xl flex justify-between">
           <input
             className="outline-none cursor-text w-full"

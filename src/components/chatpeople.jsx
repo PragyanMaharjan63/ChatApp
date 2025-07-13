@@ -1,5 +1,5 @@
 import React from "react";
-import Hamburger from "./hamburger";
+import UserOptions from "./userOptions";
 export default function ChatPeople() {
   return (
     <>
@@ -10,8 +10,8 @@ export default function ChatPeople() {
           className="w-full bg-[#272538] text-white p-3 rounded-lg outline-none"
         />
       </div>
-      <div className="absolute bottom-5 left-5">
-        <Hamburger />
+      <div className="absolute bottom-5 left-5 ">
+        <UserOptions />
       </div>
     </>
   );

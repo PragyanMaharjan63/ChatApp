@@ -2,7 +2,7 @@ import { useState } from "react";
 import { User } from "lucide-react";
 import Navbar from "./navbar";
 
-export default function hamburger() {
+export default function userOptions() {
   const [navbar, showNav] = useState(false);
   return (
     <>

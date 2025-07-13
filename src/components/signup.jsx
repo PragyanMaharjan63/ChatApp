@@ -70,7 +70,7 @@ export default function signup() {
   };
 
   return (
-    <div className="h-screen flex justify-center items-center ">
+    <div className="h-svh flex justify-center items-center ">
       <div>
         <div className="bg-white/10 border-gray-800 border backdrop-blur-md shadow-lg p-8 rounded-lg ">
           <form onSubmit={handleSubmit} className="flex flex-col gap-8">

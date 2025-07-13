@@ -24,11 +24,10 @@ function App() {
               <ChatPeople />
             </div>
           )}
-
-          {/*  ChatPeople on desktop */}
-          <div className="sm:flex sm:w-[25%] hidden">
-            <ChatPeople />
-          </div>
+        </div>
+        {/*  ChatPeople on desktop */}
+        <div className="sm:flex w-[25%] hidden">
+          <ChatPeople />
         </div>
         <div className="flex justify-center items-center sm:w-[75%] w-full">
           <Outlet />

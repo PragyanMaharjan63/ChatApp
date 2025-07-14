@@ -2,7 +2,7 @@ import { useState } from "react";
 import { User } from "lucide-react";
 import Navbar from "./navbar";
 
-export default function userOptions() {
+export default function userOptions({ onUserSelect }) {
   const [navbar, showNav] = useState(false);
   return (
     <>
@@ -24,7 +24,7 @@ export default function userOptions() {
             showNav((prev) => !prev);
           }}
         >
-          {navbar && <Navbar />}
+          {navbar && <Navbar onUserSelect={onUserSelect} />}
         </div>
       </div>
     </>

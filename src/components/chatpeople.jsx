@@ -1,6 +1,6 @@
 import React from "react";
 import UserOptions from "./userOptions";
-export default function ChatPeople() {
+export default function ChatPeople({ onUserSelect }) {
   return (
     <>
       <div className="w-full px-3 py-4">
@@ -11,7 +11,7 @@ export default function ChatPeople() {
         />
       </div>
       <div className="absolute bottom-5 left-5 ">
-        <UserOptions />
+        <UserOptions onUserSelect={onUserSelect} />
       </div>
     </>
   );

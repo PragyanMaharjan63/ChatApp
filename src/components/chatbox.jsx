@@ -19,8 +19,8 @@ export default function ChatBox() {
     setText("");
   }
   return (
-    <>
-      <div className="p-4 space-y-3 flex flex-col">
+    <div className="relative h-full flex flex-col justify-between">
+      <div className=" p-4 space-y-3 flex flex-col">
         {messages.map((msg, index) => (
           <div
             key={index}
@@ -39,7 +39,7 @@ export default function ChatBox() {
           </div>
         ))}
       </div>
-      <div className="absolute bottom-0 w-full sm:w-[80%] right-0 z-0">
+      <div className="absolute bottom-0 w-full right-0 z-0">
         <div className="bg-[#272538]  p-3 m-2 my-3 rounded-xl flex justify-between">
           <input
             className="outline-none cursor-text w-full"
@@ -56,6 +56,6 @@ export default function ChatBox() {
           <SendHorizonal className="cursor-pointer" onClick={handleSubmit} />
         </div>
       </div>
-    </>
+    </div>
   );
 }

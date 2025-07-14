@@ -34,7 +34,7 @@ export default function login() {
   };
 
   return (
-    <div className="h-svh flex items-center">
+    <div className="h-svh flex items-center justify-center w-full">
       <div>
         <div className="bg-white/10 border-gray-800 border backdrop-blur-md shadow-lg p-8 rounded-lg ">
           <form onSubmit={handleSubmit} className="flex flex-col gap-8">

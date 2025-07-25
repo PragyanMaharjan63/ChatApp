@@ -1,3 +1,4 @@
+import bcrypt from "bcryptjs";
 import User from "../models/users.js";
 
 export const signup = async (req, res) => {
@@ -15,6 +16,16 @@ export const signup = async (req, res) => {
     if (user) {
       res.status(400).json({ message: "User of this email already exists" });
     }
+    //hashing password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    const newUser = new User({
+      fullname,
+      email,
+      password: hashedPassword,
+    });
+    // generate token here
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Internal server error" });
